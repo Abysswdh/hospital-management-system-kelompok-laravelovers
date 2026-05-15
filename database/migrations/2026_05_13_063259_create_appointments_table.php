@@ -10,18 +10,30 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('appointments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('appointments', function (Blueprint $table) {
+        $table->id();
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('appointments');
-    }
+        $table->foreignId('patient_id')
+              ->constrained()
+              ->onDelete('cascade');
+
+        $table->foreignId('doctor_id')
+              ->constrained()
+              ->onDelete('cascade');
+
+        $table->date('appointment_date');
+
+        $table->enum('status', [
+            'pending',
+            'confirmed',
+            'completed',
+            'cancelled'
+        ])->default('pending');
+
+        $table->text('complaint');
+
+        $table->timestamps();
+    });
+}
 };

@@ -10,18 +10,21 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-        Schema::create('medical_records', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('medical_records', function (Blueprint $table) {
+        $table->id();
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
-    {
-        Schema::dropIfExists('medical_records');
-    }
+        $table->foreignId('appointment_id')
+              ->constrained()
+              ->onDelete('cascade');
+
+        $table->text('diagnosis');
+
+        $table->text('prescription');
+
+        $table->text('notes')->nullable();
+
+        $table->timestamps();
+    });
+}
 };

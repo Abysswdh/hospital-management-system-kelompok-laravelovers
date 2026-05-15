@@ -7,21 +7,21 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     public function up(): void
-    {
-        Schema::create('doctors', function (Blueprint $table) {
-            $table->id();
+{
+    Schema::create('doctors', function (Blueprint $table) {
+        $table->id();
 
-            $table->foreignId('user_id')
-                  ->constrained()
-                  ->onDelete('cascade');
+        $table->foreignId('user_id')
+              ->constrained()
+              ->onDelete('cascade');
 
-            $table->string('specialization');
-            $table->string('phone');
-            $table->string('photo')->nullable();
+        $table->string('specialization');
+        $table->string('phone');
+        $table->string('photo')->nullable();
 
-            $table->timestamps();
-        });
-    }
+        $table->timestamps();
+    });
+}
 
     public function down(): void
     {
