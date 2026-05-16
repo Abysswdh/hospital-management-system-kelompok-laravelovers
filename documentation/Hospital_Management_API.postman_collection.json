@@ -1,0 +1,87 @@
+{
+  "info": {
+    "_postman_id": "hospital-api",
+    "name": "Hospital Management System",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"name\":\"Dr. Test\",\"email\":\"test@example.com\",\"password\":\"password123\",\"password_confirmation\":\"password123\",\"role\":\"doctor\"}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/register",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "auth", "register"]
+        }
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"email\":\"test@example.com\",\"password\":\"password123\"}"
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/auth/login",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "auth", "login"]
+        }
+      }
+    },
+    {
+      "name": "Get Doctors",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/doctors",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "doctors"]
+        }
+      }
+    },
+    {
+      "name": "Get Patients",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/patients",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "patients"]
+        }
+      }
+    },
+    {
+      "name": "Get Appointments",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/appointments",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "appointments"]
+        }
+      }
+    }
+  ]
+}

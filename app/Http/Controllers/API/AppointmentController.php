@@ -24,10 +24,12 @@ class AppointmentController extends Controller
             'patient_id' => 'required|exists:patients,id',
             'doctor_id' => 'required|exists:doctors,id',
             'appointment_date' => 'required|date_format:Y-m-d H:i:s|after:now',
-            'status' => 'sometimes|in:scheduled,completed,cancelled|default:scheduled',
+            'status' => 'sometimes|in:pending,confirmed,completed,cancelled',
             'complaint' => 'required|string|max:500'
         ]);
 
+        $validated['status'] = $validated['status'] ?? 'pending';
+        $validated['appointment_date'] = substr($validated['appointment_date'], 0, 10);
         $appointment = Appointment::create($validated);
         return response()->json([
             'message' => 'Appointment created successfully.',
